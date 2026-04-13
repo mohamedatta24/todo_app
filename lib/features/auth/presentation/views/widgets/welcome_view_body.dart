@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/core/router/app_router_name.dart';
 import 'package:todo_app/core/theme/app_colors.dart';
 import 'package:todo_app/core/theme/app_text_styles.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
@@ -34,7 +35,12 @@ class WelcomeViewBody extends StatelessWidget {
           const Expanded(child: SizedBox()),
           Column(
             children: [
-              CustomButton(text: "Login", onTap: () {}),
+              CustomButton(
+                text: "Login",
+                onTap: () {
+                  Navigator.pushNamed(context, AppRouterName.login);
+                },
+              ),
               const SizedBox(height: 16.0),
               CustomButton(
                 text: "Create account",
