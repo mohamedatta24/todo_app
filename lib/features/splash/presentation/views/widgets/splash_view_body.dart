@@ -32,7 +32,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         children: [
           SvgPicture.asset(Assets.imagesLogo),
           const SizedBox(height: 16.0),
-          Text(
+          const Text(
             "ToDo Shawali",
             style: TextStyle(
               fontSize: 40,
@@ -40,7 +40,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               color: AppColors.textColor,
             ),
           ),
-          Text(
+          const Text(
             "Shawali XFlutter",
             style: TextStyle(
               fontSize: 16,

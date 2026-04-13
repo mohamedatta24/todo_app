@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/core/router/app_router_name.dart';
 import 'package:todo_app/features/auth/presentation/views/login_view.dart';
+import 'package:todo_app/features/auth/presentation/views/signup_view.dart';
 import 'package:todo_app/features/auth/presentation/views/welcome_view.dart';
 import 'package:todo_app/features/onBoarding/presentation/views/on_boarding_view.dart';
 import 'package:todo_app/features/splash/presentation/views/splash_view.dart';
@@ -19,6 +20,8 @@ class AppRouter {
       case AppRouterName.login:
         return MaterialPageRoute(builder: (_) => const LoginView());
 
+      case AppRouterName.signup:
+        return MaterialPageRoute(builder: (_) => const SignupView());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

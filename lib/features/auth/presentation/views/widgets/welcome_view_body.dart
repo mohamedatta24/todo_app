@@ -44,7 +44,9 @@ class WelcomeViewBody extends StatelessWidget {
               const SizedBox(height: 16.0),
               CustomButton(
                 text: "Create account",
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, AppRouterName.signup);
+                },
                 backgroundColor: Colors.transparent,
                 textColor: AppColors.textColor,
               ),
