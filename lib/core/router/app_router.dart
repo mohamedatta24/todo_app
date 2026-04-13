@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/router/app_router_name.dart';
+import 'package:todo_app/core/services/dependency_injection.dart';
+import 'package:todo_app/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
+import 'package:todo_app/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
 import 'package:todo_app/features/auth/presentation/views/login_view.dart';
 import 'package:todo_app/features/auth/presentation/views/signup_view.dart';
 import 'package:todo_app/features/auth/presentation/views/welcome_view.dart';
@@ -18,10 +22,20 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const WelcomeView());
 
       case AppRouterName.login:
-        return MaterialPageRoute(builder: (_) => const LoginView());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginView(),
+          ),
+        );
 
       case AppRouterName.signup:
-        return MaterialPageRoute(builder: (_) => const SignupView());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<SignupCubit>(),
+            child: const SignupView(),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

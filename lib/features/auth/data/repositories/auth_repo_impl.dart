@@ -29,4 +29,22 @@ class AuthRepoImpl implements AuthRepo {
       return Left(ServerFailure('An unexpected error occurred.'));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> loginWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final user = await firebaseAuthService.signInWithEmailAndPassword(
+        email,
+        password,
+      );
+      return Right(UserModel.fromUserFirebase(user));
+    } on CustomException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      return Left(ServerFailure('An unexpected error occurred.'));
+    }
+  }
 }

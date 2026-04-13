@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/theme/app_colors.dart';
 import 'package:todo_app/core/theme/app_text_styles.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
-import 'package:todo_app/features/auth/presentation/signup/signup_cubit.dart';
+import 'package:todo_app/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
 import 'package:todo_app/features/auth/presentation/views/widgets/already_have_an_account.dart';
 import 'package:todo_app/features/auth/presentation/views/widgets/custom_password_field.dart';
 import 'package:todo_app/features/auth/presentation/views/widgets/custom_text_form_field.dart';
