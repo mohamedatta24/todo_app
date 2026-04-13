@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/core/theme/app_colors.dart';
+import 'package:todo_app/features/onBoarding/presentation/views/on_boarding_view.dart';
 import 'package:todo_app/features/splash/presentation/views/splash_view.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class ToDoApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
       debugShowCheckedModeBanner: false,
-      home: SplashView(),
+      home: OnBoardingView(),
     );
   }
 }
