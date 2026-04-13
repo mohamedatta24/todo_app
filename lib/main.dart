@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/core/router/app_router.dart';
+import 'package:todo_app/core/router/app_router_name.dart';
 import 'package:todo_app/core/theme/app_colors.dart';
 import 'package:todo_app/features/onBoarding/presentation/views/on_boarding_view.dart';
-import 'package:todo_app/features/splash/presentation/views/splash_view.dart';
 
 void main() {
   runApp(const ToDoApp());
@@ -16,6 +17,8 @@ class ToDoApp extends StatelessWidget {
       theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
       debugShowCheckedModeBanner: false,
       home: OnBoardingView(),
+      onGenerateRoute: AppRouter().onGenerateRoute,
+      initialRoute: AppRouterName.splash,
     );
   }
 }
