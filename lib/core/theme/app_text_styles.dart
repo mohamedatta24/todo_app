@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 class AppTextStyles {
   static const String fontFamily = 'Roboto';
 
+  static const TextStyle bold32 = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+  );
+
   static const TextStyle bold22 = TextStyle(
     fontFamily: fontFamily,
     fontSize: 22,
