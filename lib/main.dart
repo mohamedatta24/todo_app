@@ -17,7 +17,7 @@ class ToDoApp extends StatelessWidget {
       theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
       debugShowCheckedModeBanner: false,
       home: OnBoardingView(),
-      onGenerateRoute: AppRouter().onGenerateRoute,
+      onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: AppRouterName.splash,
     );
   }

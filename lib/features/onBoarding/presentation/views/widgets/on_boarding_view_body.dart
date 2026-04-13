@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/core/router/app_router_name.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/features/onBoarding/presentation/views/widgets/custom_page_indicator.dart';
 import 'package:todo_app/features/onBoarding/presentation/views/widgets/on_boarding_item_page_view.dart';
@@ -46,7 +47,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.easeInOut,
                 );
-              } else {}
+              } else {
+                Navigator.pushReplacementNamed(context, AppRouterName.wlcome);
+              }
             },
             text: currentPage < 2 ? 'Next' : 'Get Started',
           ),
