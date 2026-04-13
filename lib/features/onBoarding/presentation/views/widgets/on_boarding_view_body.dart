@@ -35,6 +35,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
         Expanded(child: OnBoardingItemPageView(controller: _pageController)),
         CustomPageIndicator(controller: _pageController),
         const SizedBox(height: 32.0),
