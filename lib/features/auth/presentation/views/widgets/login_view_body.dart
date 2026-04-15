@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/theme/app_colors.dart';
@@ -73,13 +71,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             SocialLoginButtons(
               text: "Login with Facebook",
               image: Assets.imagesSocialIconsFacebook,
-              onTap: () {},
+              onTap: () {
+                context.read<LoginCubit>().signInWithFacebook();
+              },
             ),
             const SizedBox(height: 16.0),
             SocialLoginButtons(
               text: "Login with Google",
               image: Assets.imagesSocialIconsGoogle,
-              onTap: () {},
+              onTap: () {
+                context.read<LoginCubit>().signInWithGoogle();
+              },
             ),
             const SizedBox(height: 16.0),
             SocialLoginButtons(

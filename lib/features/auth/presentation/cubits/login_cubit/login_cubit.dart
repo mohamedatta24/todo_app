@@ -9,6 +9,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.authRepo) : super(LoginInitial());
   final AuthRepo authRepo;
 
+  // login with email and password--------------------------------------
   Future<void> loginWithEmailAndPassword({
     required String email,
     required String password,
@@ -18,6 +19,26 @@ class LoginCubit extends Cubit<LoginState> {
       email: email,
       password: password,
     );
+    result.fold(
+      (failure) => emit(LoginFailure(failure.message)),
+      (user) => emit(LoginSuccess(user)),
+    );
+  }
+
+  // sign in with google--------------------------------------
+  Future<void> signInWithGoogle() async {
+    emit(LoginLoading());
+    final result = await authRepo.signInWithGoogle();
+    result.fold(
+      (failure) => emit(LoginFailure(failure.message)),
+      (user) => emit(LoginSuccess(user)),
+    );
+  }
+
+  // sign in with facebook--------------------------------------
+  Future<void> signInWithFacebook() async {
+    emit(LoginLoading());
+    final result = await authRepo.signInWithFacebook();
     result.fold(
       (failure) => emit(LoginFailure(failure.message)),
       (user) => emit(LoginSuccess(user)),

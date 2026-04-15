@@ -11,6 +11,7 @@ class AuthRepoImpl implements AuthRepo {
 
   AuthRepoImpl({required this.firebaseAuthService});
 
+  // create user with email and password--------------------------------------
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword({
     required String name,
@@ -30,6 +31,7 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
 
+  // login with email and password--------------------------------------
   @override
   Future<Either<Failure, UserEntity>> loginWithEmailAndPassword({
     required String email,
@@ -40,6 +42,32 @@ class AuthRepoImpl implements AuthRepo {
         email,
         password,
       );
+      return Right(UserModel.fromUserFirebase(user));
+    } on CustomException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      return Left(ServerFailure('An unexpected error occurred.'));
+    }
+  }
+
+  // sign in with google--------------------------------------
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      final user = await firebaseAuthService.signInWithGoogle();
+      return Right(UserModel.fromUserFirebase(user));
+    } on CustomException catch (e) {
+      return Left(ServerFailure(e.message));
+    } catch (e) {
+      return Left(ServerFailure('An unexpected error occurred.'));
+    }
+  }
+
+  // sign in with facebook--------------------------------------
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      final user = await firebaseAuthService.signInWithFacebook();
       return Right(UserModel.fromUserFirebase(user));
     } on CustomException catch (e) {
       return Left(ServerFailure(e.message));
