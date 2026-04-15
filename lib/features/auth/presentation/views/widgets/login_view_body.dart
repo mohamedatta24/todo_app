@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/theme/app_colors.dart';
@@ -83,12 +85,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 context.read<LoginCubit>().signInWithGoogle();
               },
             ),
-            const SizedBox(height: 16.0),
-            SocialLoginButtons(
-              text: "Login with Apple",
-              image: Assets.imagesSocialIconsApple,
-              onTap: () {},
-            ),
+            Platform.isIOS
+                ? Column(
+                    children: [
+                      const SizedBox(height: 16.0),
+                      SocialLoginButtons(
+                        text: "Login with Apple",
+                        image: Assets.imagesSocialIconsApple,
+                        onTap: () {},
+                      ),
+                    ],
+                  )
+                : SizedBox(),
             const SizedBox(height: 32.0),
             const DontHaveAnAccount(),
           ],

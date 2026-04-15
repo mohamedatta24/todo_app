@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:todo_app/core/errors/failure.dart';
 import 'package:todo_app/features/auth/domain/entities/user_entity.dart';
 
@@ -21,4 +22,13 @@ abstract class AuthRepo {
 
   // sign in with facebook--------------------------------------
   Future<Either<Failure, UserEntity>> signInWithFacebook();
+
+  // addUserData--------------------------------------
+  Future<void> addUserData({required UserEntity user});
+
+  // getUserData--------------------------------------
+  Future<UserEntity> getUserData({required String uid});
+
+  // delete account
+  Future<void> deleteAccount();
 }

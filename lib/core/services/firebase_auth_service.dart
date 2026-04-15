@@ -6,6 +6,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:todo_app/core/errors/custom_exception.dart';
 
 class FirebaseAuthService {
+  Future<void> deleteData() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
+
   // createUserWithEmailAndPassword--------------------------------------
   Future<User> createUserWithEmailAndPassword(
     String email,
@@ -38,17 +42,21 @@ class FirebaseAuthService {
         email: email,
         password: password,
       );
+
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log("FirebaseAuthException: ${e.code} - ${e.message}");
+
       if (e.code == 'user-not-found') {
         throw CustomException('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        throw CustomException('Wrong password provided for that user.');
-      } else if (e.code == "network-request-failed") {
+        throw CustomException('Wrong password provided.');
+      } else if (e.code == 'invalid-credential') {
+        throw CustomException('Invalid email or password.');
+      } else if (e.code == 'network-request-failed') {
         throw CustomException('Please check your internet connection');
       } else {
-        throw CustomException('An error occurred while signing in the user.');
+        throw CustomException('An error occurred while signing in.');
       }
     } catch (e) {
       throw CustomException('An unexpected error occurred.');

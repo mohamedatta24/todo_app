@@ -11,9 +11,12 @@ import 'package:todo_app/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   Bloc.observer = CustomBlocObserver();
   setupGetIt();
+
   runApp(const ToDoApp());
 }
 
@@ -26,8 +29,8 @@ class ToDoApp extends StatelessWidget {
       theme: ThemeData(scaffoldBackgroundColor: AppColors.backgroundColor),
       debugShowCheckedModeBanner: false,
       home: OnBoardingView(),
-      onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: AppRouterName.splash,
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }
